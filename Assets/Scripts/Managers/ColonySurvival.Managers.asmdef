@@ -1,0 +1,16 @@
+{
+    "name": "ColonySurvival.Managers",
+    "rootNamespace": "",
+    "references": [
+        "GUID:679618f3887044f4bbb04d0d1ad94fd9"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
