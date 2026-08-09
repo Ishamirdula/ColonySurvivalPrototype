@@ -2,7 +2,8 @@
     "name": "ColonySurvival.Managers",
     "rootNamespace": "",
     "references": [
-        "GUID:679618f3887044f4bbb04d0d1ad94fd9"
+        "GUID:679618f3887044f4bbb04d0d1ad94fd9",
+        "GUID:a8884a140616c0745a02e04e72c70e5d"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
