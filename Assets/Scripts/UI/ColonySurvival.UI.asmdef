@@ -1,10 +1,9 @@
 {
-    "name": "ColonySurvival.Managers",
+    "name": "ColonySurvival.UI",
     "rootNamespace": "",
     "references": [
-        "GUID:679618f3887044f4bbb04d0d1ad94fd9",
         "GUID:a8884a140616c0745a02e04e72c70e5d",
-        "GUID:251cdd7eaeda0bc448425f5cf3fd5e8c"
+        "GUID:6055be8ebefd69e48b49212b09b47b2f"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

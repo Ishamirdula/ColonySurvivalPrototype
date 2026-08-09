@@ -5,6 +5,8 @@ public class GameManager : MonoBehaviour
     private ColonySimulation simulation;
     private float dayTimer;
 
+    [SerializeField] private ColonyUIController uiController;
+
     private void Start()
     {
         JsonLoader jsonLoader = GetComponent<JsonLoader>();
@@ -17,6 +19,8 @@ public class GameManager : MonoBehaviour
 
         simulation =
             new ColonySimulation(populationData, consumptionData);
+
+        uiController.UpdateUI(simulation);
     }
 
     private void Update()
@@ -34,12 +38,8 @@ public class GameManager : MonoBehaviour
 
             simulation.AdvanceDay();
 
-            Debug.Log(
-                $"Game Day: {simulation.CurrentDay} | " +
-                $"Food: {simulation.CurrentFood} | " +
-                $"Water: {simulation.CurrentWater} | " +
-                $"Starving: {simulation.IsStarving}"
-            );
+            uiController.UpdateUI(simulation);
+
         }
     }
 }
