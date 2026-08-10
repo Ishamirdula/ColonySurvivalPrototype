@@ -73,7 +73,7 @@ The simulation logic is contained in the plain C# `ColonySimulation` class, incl
 
 ## AI Tools Used
 
-ChatGPT and Claude was used as a development assistant for understanding the task, planning the architecture, reviewing C# code, designing unit tests, and preparing documentation.
+ChatGPT and Claude were used as a development assistant for understanding the task, planning the architecture, reviewing C# code, designing unit tests, and preparing documentation.
 
 The Unity project setup, scene configuration, integration, testing, and final implementation decisions were completed and verified by me.
 
