@@ -5,14 +5,17 @@ public class ColonySimulation
     private readonly int villagers;
     private readonly float foodPerVillagerPerDay;
     private readonly float waterPerVillagerPerDay;
+    private readonly float secondsPerGameDay;
 
     private float currentFood;
     private float currentWater;
     private int currentDay;
+    private float elapsedSeconds;
 
     public ColonySimulation(
         PopulationData populationData,
-        ConsumptionData consumptionData)
+        ConsumptionData consumptionData,
+        float secondsPerGameDay = 1f)
     {
         villagers = populationData.villagers;
 
@@ -25,23 +28,39 @@ public class ColonySimulation
         waterPerVillagerPerDay =
             consumptionData.waterPerVillagerPerDay;
 
+        this.secondsPerGameDay = secondsPerGameDay;
+
         currentDay = 0;
+        elapsedSeconds = 0f;
     }
 
-    public float DailyFoodConsumption
+    private float DailyFoodConsumption
     {
-        get
-        {
-            return villagers * foodPerVillagerPerDay;
-        }
+        get { return villagers * foodPerVillagerPerDay; }
     }
 
-    public float DailyWaterConsumption
+    private float DailyWaterConsumption
     {
-        get
+        get { return villagers * waterPerVillagerPerDay; }
+    }
+
+    public bool Tick(float deltaTime)
+    {
+        if (IsStarving)
         {
-            return villagers * waterPerVillagerPerDay;
+            return false;
         }
+
+        elapsedSeconds += deltaTime;
+
+        if (elapsedSeconds < secondsPerGameDay)
+        {
+            return false;
+        }
+
+        elapsedSeconds -= secondsPerGameDay;
+        AdvanceDay();
+        return true;
     }
 
     public void AdvanceDay()
@@ -59,11 +78,7 @@ public class ColonySimulation
     {
         get
         {
-            if (DailyFoodConsumption <= 0)
-            {
-                return 0;
-            }
-
+            if (DailyFoodConsumption <= 0) return 0;
             return currentFood / DailyFoodConsumption;
         }
     }
@@ -72,35 +87,20 @@ public class ColonySimulation
     {
         get
         {
-            if (DailyWaterConsumption <= 0)
-            {
-                return 0;
-            }
-
+            if (DailyWaterConsumption <= 0) return 0;
             return currentWater / DailyWaterConsumption;
         }
     }
 
     public bool IsStarving
     {
-        get
-        {
-            return currentFood <= 0 || currentWater <= 0;
-        }
+        get { return currentFood <= 0 || currentWater <= 0; }
     }
 
-    public float CurrentFood
-    {
-        get { return currentFood; }
-    }
+    public float CurrentFood { get { return currentFood; } }
+    public float CurrentWater { get { return currentWater; } }
+    public int CurrentDay { get { return currentDay; } }
 
-    public float CurrentWater
-    {
-        get { return currentWater; }
-    }
-
-    public int CurrentDay
-    {
-        get { return currentDay; }
-    }
+    public float DailyFoodConsumptionValue { get { return DailyFoodConsumption; } }
+    public float DailyWaterConsumptionValue { get { return DailyWaterConsumption; } }
 }
