@@ -10,15 +10,18 @@ public class ColonyUIController : MonoBehaviour
 
     public void UpdateUI(ColonySimulation simulation)
     {
-        gameDayText.text = $"GAME DAY: {simulation.CurrentDay}";
+        gameDayText.text =
+            $"GAME DAY : {simulation.CurrentDay}";
 
         foodText.text =
-            $"FOOD\n{simulation.CurrentFood:F1}\n" +
-            $"{simulation.FoodDaysRemaining:F1} DAYS REMAINING";
+            $"FOOD\n\n" +
+            $"{simulation.CurrentFood:F1} units\n" +
+            $"{simulation.FoodDaysRemaining:0} Days Remaining";
 
         waterText.text =
-            $"WATER\n{simulation.CurrentWater:F1}\n" +
-            $"{simulation.WaterDaysRemaining:F1} DAYS REMAINING";
+            $"WATER\n\n" +
+            $"{simulation.CurrentWater:F1} L\n" +
+            $"{simulation.WaterDaysRemaining:0} Days Remaining";
 
         statusText.text = simulation.IsStarving
             ? "COLONY STARVING"

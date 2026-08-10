@@ -28,7 +28,7 @@ public class ColonySimulation
         currentDay = 0;
     }
 
-    private float DailyFoodConsumption
+    public float DailyFoodConsumption
     {
         get
         {
@@ -36,7 +36,7 @@ public class ColonySimulation
         }
     }
 
-    private float DailyWaterConsumption
+    public float DailyWaterConsumption
     {
         get
         {
